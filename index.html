@@ -44,7 +44,7 @@
   /* CONTENIDOR DELS SET BOTONS */
   .xarxes {
     width: 100%;
-    max-width: 720px;
+    max-width: 1200px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -59,25 +59,19 @@
     line-height: 0;
   }
 
+  /* IMATGES AL 25% DE LA MIDA DISPONIBLE */
   .xarxes img {
     display: block;
-    width: 10%;
+    width: 25%;
     height: auto;
-    max-width: 720px;
-    min-width: 280px;
     margin: 0 auto;
     object-fit: contain;
   }
 
-  /* Adaptació per a mòbil */
+  /* En pantalles petites, una mica més grans per facilitar el clic */
   @media (max-width: 600px) {
-    .xarxes {
-      max-width: 100%;
-    }
-
     .xarxes img {
-      width: 90%;
-      min-width: 0;
+      width: 80%;
     }
   }
 </style>
@@ -95,14 +89,15 @@
   <!-- TÍTOL -->
   <h1 id="titol">🔊 Escolta l'àudio</h1>
 
-  <!-- ÀUDIO -->
+  <!-- REPRODUCTOR -->
   <iframe
     id="f"
     scrolling="no"
     title="Reproductor d'àudio"
   ></iframe>
 
-  <!-- SET BOTONS / IMATGES -->
+  <!-- SET BOTONS -->
+
   <div class="xarxes">
 
     <!-- 1. X / TWITTER -->
@@ -111,7 +106,7 @@
       title="X per rebre informació"
     >
       <img
-        src="twitter_t.png"
+        src="audio/twitter_t.png"
         alt="X — @latdeg"
       >
     </a>
@@ -122,7 +117,7 @@
       title="WhatsApp Business per escriure'ns"
     >
       <img
-        src="whatscontacte_t.png"
+        src="audio/whatscontacte_t.png"
         alt="WhatsApp Business — 632 042 734"
       >
     </a>
@@ -133,7 +128,7 @@
       title="Canal de WhatsApp per rebre informació"
     >
       <img
-        src="whatscanal_t.png"
+        src="audio/whatscanal_t.png"
         alt="WhatsApp — Canal"
       >
     </a>
@@ -144,7 +139,7 @@
       title="Telegram per escriure'ns"
     >
       <img
-        src="telcontacte_t.png"
+        src="audio/telcontacte_t.png"
         alt="Telegram — Contacte"
       >
     </a>
@@ -155,7 +150,7 @@
       title="Canal de Telegram per rebre informació"
     >
       <img
-        src="telcanal_t.png"
+        src="audio/telcanal_t.png"
         alt="Telegram — Canal"
       >
     </a>
@@ -166,7 +161,7 @@
       title="Envia'ns un correu electrònic"
     >
       <img
-        src="correu_t.png"
+        src="audio/correu_t.png"
         alt="Correu electrònic — latdg@laguait.cat"
       >
     </a>
@@ -177,7 +172,7 @@
       title="La TdG Pòdcast"
     >
       <img
-        src="latdg_t.png"
+        src="audio/latdg_t.png"
         alt="La TdG Pòdcast"
       >
     </a>
