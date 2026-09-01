@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ca">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -44,16 +44,17 @@
   /* BOTONS */
   .xarxes {
     width: 100%;
-    max-width: 480px;
+    max-width: 700px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
   }
 
   .xarxes a {
     display: block;
     width: 100%;
+    max-width: 700px;
     text-decoration: none;
     line-height: 0;
   }
@@ -65,16 +66,29 @@
     border: 0;
   }
 
-  /* Adaptació per a pantalles petites */
-  @media (max-width: 520px) {
+  /* Adaptació per a mòbil */
+  @media (max-width: 600px) {
     html, body {
-      padding-left: 10px;
-      padding-right: 10px;
+      padding: 20px 10px 30px;
+    }
+
+    .logo {
+      width: 95px;
+      height: 95px;
+    }
+
+    h1 {
+      font-size: 1.15em;
+      margin-bottom: 18px;
     }
 
     .xarxes {
       max-width: 100%;
       gap: 10px;
+    }
+
+    .xarxes a {
+      max-width: 100%;
     }
   }
 </style>
@@ -82,138 +96,120 @@
 
 <body>
 
-  <!-- LOGOTIP DE LA TORRE DE GUAITA -->
+  <!-- LOGOTIP -->
   <img
     class="logo"
     src="logo.png"
     alt="La Torre de Guaita"
   >
 
+  <!-- TÍTOL -->
   <h1 id="titol">🔊 Escolta l'àudio</h1>
 
+  <!-- ÀUDIO -->
   <iframe
     id="f"
-    scrolling="no"
-  ></iframe>
+    scrolling="no">
+  </iframe>
 
-
-  <!-- =========================================
-       SET BOTONS / IMATGES
-       ========================================= -->
-
+  <!-- BOTONS -->
   <div class="xarxes">
 
-    <!-- 1. X / TWITTER -->
+    <!-- X -->
     <a
       href="https://x.com/laTdeG"
-      title="X de La Torre de Guaita"
-    >
+      title="X — @latdeg"
+      target="_blank"
+      rel="noopener">
       <img
         src="twitter_t.png"
-        alt="X — @latdeg"
-      >
+        alt="X — @latdeg">
     </a>
 
-
-    <!-- 2. WHATSAPP BUSINESS -->
+    <!-- WHATSAPP BUSINESS -->
     <a
       href="https://wa.me/632042734"
-      title="WhatsApp Business de La Torre de Guaita"
-    >
+      title="WhatsApp Business — 632 042 734"
+      target="_blank"
+      rel="noopener">
       <img
         src="whatscontacte_t.png"
-        alt="WhatsApp Business — 632 042 734"
-      >
+        alt="WhatsApp Business — 632 042 734">
     </a>
 
-
-    <!-- 3. CANAL DE WHATSAPP -->
+    <!-- WHATSAPP CANAL -->
     <a
       href="https://wa.me/channel/0029Vb7eGZSJZg4G6UhXkE2u"
-      title="Canal de WhatsApp de La Torre de Guaita"
-    >
+      title="WhatsApp — Canal"
+      target="_blank"
+      rel="noopener">
       <img
         src="whatscanal_t.png"
-        alt="WhatsApp — Canal"
-      >
+        alt="WhatsApp — Canal">
     </a>
 
-
-    <!-- 4. CONTACTE DE TELEGRAM -->
+    <!-- TELEGRAM CONTACTE -->
     <a
       href="https://t.me/laTdG_contacte"
-      title="Contacte de La Torre de Guaita per Telegram"
-    >
+      title="Telegram — Contacte"
+      target="_blank"
+      rel="noopener">
       <img
-        src="telcontacte_t(2).png"
-        alt="Telegram — Contacte"
-      >
+        src="telcontacte_t.png"
+        alt="Telegram — Contacte">
     </a>
 
-
-    <!-- 5. CANAL DE TELEGRAM -->
+    <!-- TELEGRAM CANAL -->
     <a
       href="https://t.me/laTdG_podcast"
-      title="Canal de Telegram de La Torre de Guaita"
-    >
+      title="Telegram — Canal"
+      target="_blank"
+      rel="noopener">
       <img
         src="telcanal_t.png"
-        alt="Telegram — Canal"
-      >
+        alt="Telegram — Canal">
     </a>
 
-
-    <!-- 6. CORREU ELECTRÒNIC -->
+    <!-- CORREU ELECTRÒNIC -->
     <a
       href="mailto:latdg@laguait.cat"
-      title="Enviar un correu electrònic a La Torre de Guaita"
-    >
+      title="Correu electrònic — latdg@laguait.cat">
       <img
         src="correu_t.png"
-        alt="Correu electrònic — latdg@laguait.cat"
-      >
+        alt="Correu electrònic — latdg@laguait.cat">
     </a>
 
-<!-- 7. LA TdG PÒDCAST -->
-<a
-  href="https://laguait.cat/latdg"
-  title="La TdG Pòdcast"
->
-  <img
-    src="latdg_t.png"
-    alt="La TdG Pòdcast"
-  >
-</a>
-    
- </div>
+    <!-- PÒDCAST -->
+    <a
+      href="https://laguait.cat/latdg"
+      title="La TdG Pòdcast"
+      target="_blank"
+      rel="noopener">
+      <img
+        src="latdg_t.png"
+        alt="La TdG Pòdcast">
+    </a>
+
+  </div>
 
 
 <script>
-
-  /* =========================================
-     ÀUDIO
-     ========================================= */
-
   var p = new URLSearchParams(location.search);
 
+  /* ÀUDIO */
   var s = p.get('src');
 
   if (s) {
     document.getElementById('f').src = s;
   }
 
-
-  /* =========================================
-     TÍTOL
-     ========================================= */
-
+  /* TÍTOL */
   var titol = p.get('titol');
 
   if (titol) {
     document.getElementById('titol').textContent =
       '🗣️ Declaracions de ' + titol;
   }
-
 </script>
 
 </body>
