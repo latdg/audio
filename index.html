@@ -42,45 +42,63 @@
   }
 
   /* TAULES DELS BOTONS */
-  .botons {
+
+  .taula-botons {
     width: 100%;
-    max-width: 900px;
+    max-width: 1050px;
     border-collapse: collapse;
-    background: transparent;
-    border: 0;
-    margin: 0 auto 22px;
+    border: 0 !important;
+    margin: 0 auto 20px;
+    background: transparent !important;
   }
 
-  .botons td {
+  .taula-botons td {
     width: 33.33%;
     text-align: center;
     vertical-align: middle;
-    background: transparent;
-    border: 0;
+    border: 0 !important;
     padding: 0;
+    background: transparent !important;
   }
 
-  .botons a {
+  .taula-botons a {
     display: block;
     text-decoration: none;
     line-height: 0;
   }
 
-  .botons img {
+  /* MIDA DE LES IMATGES */
+
+  .taula-botons img {
     display: block;
-    box-shadow: none;
-    border: 0;
-    width: 85%;
-    max-width: 350px;
+    width: 70%;
+    max-width: 280px;
     height: auto;
     margin: 0 auto;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  /* ESPAI ENTRE FILES */
+
+  .fila-separacio td {
+    height: 18px;
   }
 
   /* MÒBIL */
+
   @media (max-width: 600px) {
-    .botons img {
-      width: 90%;
+
+    body {
+      padding-left: 8px;
+      padding-right: 8px;
     }
+
+    .taula-botons img {
+      width: 90%;
+      max-width: 280px;
+    }
+
   }
 </style>
 </head>
@@ -88,6 +106,7 @@
 <body>
 
   <!-- LOGOTIP -->
+
   <img
     class="logo"
     src="logo.png"
@@ -95,9 +114,11 @@
   >
 
   <!-- TÍTOL -->
+
   <h1 id="titol">🔊 Escolta l'àudio</h1>
 
   <!-- REPRODUCTOR -->
+
   <iframe
     id="f"
     scrolling="no"
@@ -106,29 +127,34 @@
 
 
   <!-- =====================================================
-       XARXES PER REBRE INFORMACIÓ
+       PRIMERA FILA
+       X · WHATSAPP CANAL · TELEGRAM CANAL
        ===================================================== -->
 
-  <table class="botons">
+  <table class="taula-botons">
     <tbody>
+
       <tr>
 
         <!-- X -->
+
         <td>
           <a
-            href="https://x.com/laTdeG"
+            href="https://x.com/latdeg"
             target="_blank"
             rel="noopener"
-            title="X per rebre informació"
+            title="X @latdeg"
           >
             <img
-              src="twitter_t.png"
+              src="https://latdg.github.io/audio/twitter_t.png"
               alt="X @latdeg"
             >
           </a>
         </td>
 
+
         <!-- WHATSAPP CANAL -->
+
         <td>
           <a
             href="https://wa.me/channel/0029Vb7eGZSJZg4G6UhXkE2u"
@@ -137,13 +163,15 @@
             title="Canal de WhatsApp"
           >
             <img
-              src="whatscanal_t.png"
+              src="https://latdg.github.io/audio/whatscanal_t.png"
               alt="Canal de WhatsApp"
             >
           </a>
         </td>
 
+
         <!-- TELEGRAM CANAL -->
+
         <td>
           <a
             href="https://t.me/laTdG_podcast"
@@ -152,39 +180,46 @@
             title="Canal de Telegram"
           >
             <img
-              src="telcanal_t.png"
+              src="https://latdg.github.io/audio/telcanal_t.png"
               alt="Canal de Telegram"
             >
           </a>
         </td>
 
       </tr>
-    </tbody>
-  </table>
 
 
-  <!-- =====================================================
-       CONTACTE
-       ===================================================== -->
+      <!-- ESPAI ENTRE FILES -->
 
-  <table class="botons">
-    <tbody>
+      <tr class="fila-separacio">
+        <td colspan="3"></td>
+      </tr>
+
+
+      <!-- =================================================
+           SEGONA FILA
+           CORREU · TELEGRAM CONTACTE · WHATSAPP CONTACTE
+           ================================================= -->
+
       <tr>
 
         <!-- CORREU -->
+
         <td>
           <a
             href="mailto:latdg@laguait.cat"
             title="Correu electrònic"
           >
             <img
-              src="correu_t.png"
+              src="https://latdg.github.io/audio/correu_t.png"
               alt="Correu electrònic"
             >
           </a>
         </td>
 
+
         <!-- TELEGRAM CONTACTE -->
+
         <td>
           <a
             href="https://t.me/laTdG_contacte"
@@ -193,13 +228,15 @@
             title="Contacte per Telegram"
           >
             <img
-              src="telcontacte_t.png"
+              src="https://latdg.github.io/audio/telcontacte_t.png"
               alt="Telegram contacte"
             >
           </a>
         </td>
 
+
         <!-- WHATSAPP BUSINESS -->
+
         <td>
           <a
             href="https://wa.me/632042734"
@@ -208,23 +245,27 @@
             title="WhatsApp Business"
           >
             <img
-              src="whatscontacte_t.png"
+              src="https://latdg.github.io/audio/whatscontacte_t.png"
               alt="WhatsApp Business"
             >
           </a>
         </td>
 
       </tr>
-    </tbody>
-  </table>
 
 
-  <!-- =====================================================
-       PÒDCAST
-       ===================================================== -->
+      <!-- ESPAI ENTRE FILES -->
 
-  <table class="botons">
-    <tbody>
+      <tr class="fila-separacio">
+        <td colspan="3"></td>
+      </tr>
+
+
+      <!-- =================================================
+           TERCERA FILA
+           LA TdG PODCAST
+           ================================================= -->
+
       <tr>
 
         <td></td>
@@ -234,11 +275,11 @@
             href="https://laguait.cat/latdg"
             target="_blank"
             rel="noopener"
-            title="La TdG Pòdcast"
+            title="La TdG Podcast"
           >
             <img
-              src="latdg_t.png"
-              alt="La TdG Pòdcast"
+              src="https://latdg.github.io/audio/latdg_t.png"
+              alt="La TdG Podcast"
             >
           </a>
         </td>
@@ -246,13 +287,16 @@
         <td></td>
 
       </tr>
+
     </tbody>
   </table>
 
 
 <script>
 
-  /* RECUPERACIÓ DE L'ÀUDIO */
+  /* =====================================================
+     RECUPERAR L'ÀUDIO
+     ===================================================== */
 
   var p = new URLSearchParams(location.search);
 
@@ -263,7 +307,9 @@
   }
 
 
-  /* TÍTOL DINÀMIC */
+  /* =====================================================
+     TÍTOL DINÀMIC
+     ===================================================== */
 
   var titol = p.get('titol');
 
