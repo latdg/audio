@@ -4,11 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>La Torre de Guaita</title>
+
 <style>
   html, body {
     margin: 0;
     min-height: 100%;
-    background: #cfe0b8; /* mateix verd que jo.cat/latdg */
+    background: #cfe0b8;
     font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
     display: flex;
     flex-direction: column;
@@ -17,17 +18,20 @@
     box-sizing: border-box;
     text-align: center;
   }
+
   .logo {
     width: 110px;
     height: 110px;
     object-fit: contain;
     margin-bottom: 14px;
   }
+
   h1 {
     font-size: 1.3em;
     margin: 0 0 22px;
     color: #1a1a1a;
   }
+
   iframe {
     width: 100%;
     max-width: 480px;
@@ -36,65 +40,181 @@
     background: #cfe0b8;
     margin-bottom: 26px;
   }
+
+  /* BOTONS */
   .xarxes {
+    width: 100%;
+    max-width: 480px;
     display: flex;
-    gap: 18px;
-  }
-  .xarxes a {
-    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    background: #7c1d1d;
-    text-decoration: none;
+    gap: 12px;
   }
-  .xarxes img, .xarxes svg { width: 22px; height: 22px; }
+
+  .xarxes a {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    line-height: 0;
+  }
+
+  .xarxes img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 0;
+  }
+
+  /* Adaptació per a pantalles petites */
+  @media (max-width: 520px) {
+    html, body {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    .xarxes {
+      max-width: 100%;
+      gap: 10px;
+    }
+  }
 </style>
 </head>
+
 <body>
 
-  <!-- Puja el fitxer del logotip a aquest mateix repositori (per
-       exemple logo.png) i deixa aquest nom tal qual, o canvia'l pel
-       nom real del fitxer que hagis pujat. -->
-  <img class="logo" src="logo.png" alt="La Torre de Guaita">
+  <!-- LOGOTIP DE LA TORRE DE GUAITA -->
+  <img
+    class="logo"
+    src="logo.png"
+    alt="La Torre de Guaita"
+  >
 
   <h1 id="titol">🔊 Escolta l'àudio</h1>
 
-  <iframe id="f" scrolling="no"></iframe>
+  <iframe
+    id="f"
+    scrolling="no"
+  ></iframe>
 
-  <!-- Substitueix cada href pel destí real. -->
+
+  <!-- =========================================
+       SET BOTONS / IMATGES
+       ========================================= -->
+
   <div class="xarxes">
-    <a href="https://x.com/laTdeG" title="X per rebre informació">
-      <img src="https://cdn.simpleicons.org/x/ffffff" alt="X">
+
+    <!-- 1. X / TWITTER -->
+    <a
+      href="https://x.com/laTdeG"
+      title="X de La Torre de Guaita"
+    >
+      <img
+        src="twitter_t.png"
+        alt="X — @latdeg"
+      >
     </a>
-    <a href="https://https://wa.me/632042734" title="Grup de WhatsApp Business per escriure'ns">
-      <img src="https://cdn.simpleicons.org/whatsapp/ffffff" alt="WhatsApp Business">
+
+
+    <!-- 2. WHATSAPP BUSINESS -->
+    <a
+      href="https://wa.me/632042734"
+      title="WhatsApp Business de La Torre de Guaita"
+    >
+      <img
+        src="whatscontacte_t.png"
+        alt="WhatsApp Business — 632 042 734"
+      >
     </a>
-    <a href="https://wa.me/channel/0029Vb7eGZSJZg4G6UhXkE2u" title="Canal de WhatsApp per rebre informació">
-      <img src="https://cdn.simpleicons.org/whatsapp/ffffff" alt="WhatsApp">
+
+
+    <!-- 3. CANAL DE WHATSAPP -->
+    <a
+      href="https://wa.me/channel/0029Vb7eGZSJZg4G6UhXkE2u"
+      title="Canal de WhatsApp de La Torre de Guaita"
+    >
+      <img
+        src="whatscanal_t.png"
+        alt="WhatsApp — Canal"
+      >
     </a>
-	<a href="https://t.me/laTdG_contacte" title="Grup de Telegram per escriure'ns">
-      <img src="https://cdn.simpleicons.org/telegram/ffffff" alt="Telegram">
+
+
+    <!-- 4. CONTACTE DE TELEGRAM -->
+    <a
+      href="https://t.me/laTdG_contacte"
+      title="Contacte de La Torre de Guaita per Telegram"
+    >
+      <img
+        src="telcontacte_t(2).png"
+        alt="Telegram — Contacte"
+      >
     </a>
-	<a href="https://t.me/laTdG_podcast" title="Canal de Telegram per rebre informació">
-      <img src="https://cdn.simpleicons.org/telegram/ffffff" alt="Telegram">
+
+
+    <!-- 5. CANAL DE TELEGRAM -->
+    <a
+      href="https://t.me/laTdG_podcast"
+      title="Canal de Telegram de La Torre de Guaita"
+    >
+      <img
+        src="telcanal_t.png"
+        alt="Telegram — Canal"
+      >
     </a>
-    <a href="https://laguait.cat/latdg" title="Visita la pàgina de La Torre de Guaita (laTdG)">
-      <svg viewBox="0 0 24 24" fill="#fff"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg>
+
+
+    <!-- 6. CORREU ELECTRÒNIC -->
+    <a
+      href="mailto:latdg@laguait.cat"
+      title="Enviar un correu electrònic a La Torre de Guaita"
+    >
+      <img
+        src="correu_t.png"
+        alt="Correu electrònic — latdg@laguait.cat"
+      >
     </a>
+
+
+    <!-- 7. LA TdG PÒDCAST -->
+    <a
+      href="https://t.me/laTdG_podcast"
+      title="La TdG Pòdcast"
+    >
+      <img
+        src="latdg_t.png"
+        alt="La TdG Pòdcast"
+      >
+    </a>
+
   </div>
-	
+
+
 <script>
+
+  /* =========================================
+     ÀUDIO
+     ========================================= */
+
   var p = new URLSearchParams(location.search);
+
   var s = p.get('src');
-  if (s) { document.getElementById('f').src = s; }
+
+  if (s) {
+    document.getElementById('f').src = s;
+  }
+
+
+  /* =========================================
+     TÍTOL
+     ========================================= */
 
   var titol = p.get('titol');
+
   if (titol) {
-    document.getElementById('titol').textContent = '🗣️ Declaracions de ' + titol;
+    document.getElementById('titol').textContent =
+      '🗣️ Declaracions de ' + titol;
   }
+
 </script>
 
 </body>
