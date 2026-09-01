@@ -41,65 +41,43 @@
     margin-bottom: 26px;
   }
 
-  /* CONTENIDOR DELS 7 BOTONS */
+  /* CONTENIDOR DELS SET BOTONS */
   .xarxes {
+    width: 100%;
+    max-width: 720px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 14px;
-    width: 100%;
-    max-width: 400px;
+    gap: 18px;
   }
 
-  /* TOTS ELS BOTONS TENEN EXACTAMENT LA MATEIXA MIDA */
+  /* CADA BOTÓ ÉS UNA IMATGE */
   .xarxes a {
     display: block;
     width: 100%;
-    height: 135px;
-    border-radius: 18px;
-    overflow: hidden;
     text-decoration: none;
-    background: transparent;
+    line-height: 0;
   }
 
-  /* LES IMATGES S'ADAPTEN AL BOTÓ SENSE DEFORMAR-SE */
   .xarxes img {
     display: block;
-    width: 100%;
-    height: 100%;
+    width: 45%;
+    height: auto;
+    max-width: 720px;
+    min-width: 280px;
+    margin: 0 auto;
     object-fit: contain;
   }
 
-  /* Adaptació per a pantalles petites */
-  @media (max-width: 480px) {
-
-    html, body {
-      padding: 20px 10px 30px;
-    }
-
-    .logo {
-      width: 95px;
-      height: 95px;
-    }
-
-    h1 {
-      font-size: 1.15em;
-      margin-bottom: 18px;
-    }
-
-    iframe {
-      height: 120px;
-      margin-bottom: 20px;
-    }
-
+  /* Adaptació per a mòbil */
+  @media (max-width: 600px) {
     .xarxes {
-      max-width: 360px;
-      gap: 12px;
+      max-width: 100%;
     }
 
-    .xarxes a {
-      height: 120px;
-      border-radius: 16px;
+    .xarxes img {
+      width: 90%;
+      min-width: 0;
     }
   }
 </style>
@@ -107,121 +85,99 @@
 
 <body>
 
-  <!-- LOGOTIP DE LA TORRE DE GUAITA -->
+  <!-- LOGOTIP -->
   <img
     class="logo"
     src="logo.png"
     alt="La Torre de Guaita"
   >
 
-  <!-- TÍTOL DE L'ÀUDIO -->
+  <!-- TÍTOL -->
   <h1 id="titol">🔊 Escolta l'àudio</h1>
 
-  <!-- REPRODUCTOR / ÀUDIO -->
+  <!-- ÀUDIO -->
   <iframe
     id="f"
     scrolling="no"
-    title="Reproductor d'àudio">
-  </iframe>
+    title="Reproductor d'àudio"
+  ></iframe>
 
-
-  <!-- =====================================================
-       SET BOTONS
-       ===================================================== -->
-
+  <!-- SET BOTONS / IMATGES -->
   <div class="xarxes">
 
-    <!-- 1. X -->
+    <!-- 1. X / TWITTER -->
     <a
       href="https://x.com/laTdeG"
       title="X per rebre informació"
-      target="_blank"
-      rel="noopener noreferrer"
     >
       <img
-        src="audio/twitter_t.png"
+        src="twitter_t.png"
         alt="X — @latdeg"
       >
     </a>
-
 
     <!-- 2. WHATSAPP BUSINESS -->
     <a
       href="https://wa.me/632042734"
       title="WhatsApp Business per escriure'ns"
-      target="_blank"
-      rel="noopener noreferrer"
     >
       <img
-        src="audio/whatscontacte_t.png"
+        src="whatscontacte_t.png"
         alt="WhatsApp Business — 632 042 734"
       >
     </a>
 
-
-    <!-- 3. WHATSAPP CANAL -->
+    <!-- 3. CANAL DE WHATSAPP -->
     <a
       href="https://wa.me/channel/0029Vb7eGZSJZg4G6UhXkE2u"
       title="Canal de WhatsApp per rebre informació"
-      target="_blank"
-      rel="noopener noreferrer"
     >
       <img
-        src="audio/whatscanal_t.png"
+        src="whatscanal_t.png"
         alt="WhatsApp — Canal"
       >
     </a>
-
 
     <!-- 4. TELEGRAM CONTACTE -->
     <a
       href="https://t.me/laTdG_contacte"
       title="Telegram per escriure'ns"
-      target="_blank"
-      rel="noopener noreferrer"
     >
       <img
-        src="audio/telcontacte_t.png"
+        src="telcontacte_t.png"
         alt="Telegram — Contacte"
       >
     </a>
 
-
-    <!-- 5. TELEGRAM CANAL -->
+    <!-- 5. CANAL DE TELEGRAM -->
     <a
       href="https://t.me/laTdG_podcast"
       title="Canal de Telegram per rebre informació"
-      target="_blank"
-      rel="noopener noreferrer"
     >
       <img
-        src="audio/telcanal_t.png"
+        src="telcanal_t.png"
         alt="Telegram — Canal"
       >
     </a>
 
-
     <!-- 6. CORREU ELECTRÒNIC -->
     <a
       href="mailto:latdg@laguait.cat"
-      title="Enviar un correu electrònic"
+      title="Envia'ns un correu electrònic"
     >
       <img
-        src="audio/correu_t.png"
+        src="correu_t.png"
         alt="Correu electrònic — latdg@laguait.cat"
       >
     </a>
 
-
-    <!-- 7. LA TDG PÒDCAST -->
+    <!-- 7. PÒDCAST -->
     <a
       href="https://laguait.cat/latdg"
       title="La TdG Pòdcast"
-      target="_blank"
-      rel="noopener noreferrer"
     >
       <img
-        src="audio/latdg_t.png"
+        src="latdg_t.png"
         alt="La TdG Pòdcast"
       >
     </a>
@@ -231,10 +187,7 @@
 
 <script>
 
-  /* =====================================================
-     RECUPERACIÓ DE L'ÀUDIO
-     ===================================================== */
-
+  /* ÀUDIO */
   var p = new URLSearchParams(location.search);
 
   var s = p.get('src');
@@ -244,10 +197,7 @@
   }
 
 
-  /* =====================================================
-     TÍTOL DINÀMIC
-     ===================================================== */
-
+  /* TÍTOL DINÀMIC */
   var titol = p.get('titol');
 
   if (titol) {
