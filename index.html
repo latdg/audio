@@ -67,11 +67,13 @@
   }
 
   .botons img {
+    display: block;
     box-shadow: none;
     border: 0;
     width: 85%;
     max-width: 350px;
     height: auto;
+    margin: 0 auto;
   }
 
   /* MÒBIL */
@@ -120,7 +122,7 @@
             title="X per rebre informació"
           >
             <img
-              src="audio/twitter_t.png"
+              src="twitter_t.png"
               alt="X @latdeg"
             >
           </a>
@@ -135,7 +137,7 @@
             title="Canal de WhatsApp"
           >
             <img
-              src="audio/whatscanal_t.png"
+              src="whatscanal_t.png"
               alt="Canal de WhatsApp"
             >
           </a>
@@ -150,7 +152,7 @@
             title="Canal de Telegram"
           >
             <img
-              src="audio/telcanal_t.png"
+              src="telcanal_t.png"
               alt="Canal de Telegram"
             >
           </a>
@@ -176,7 +178,7 @@
             title="Correu electrònic"
           >
             <img
-              src="audio/correu_t.png"
+              src="correu_t.png"
               alt="Correu electrònic"
             >
           </a>
@@ -191,7 +193,7 @@
             title="Contacte per Telegram"
           >
             <img
-              src="audio/telcontacte_t.png"
+              src="telcontacte_t.png"
               alt="Telegram contacte"
             >
           </a>
@@ -206,7 +208,7 @@
             title="WhatsApp Business"
           >
             <img
-              src="audio/whatscontacte_t.png"
+              src="whatscontacte_t.png"
               alt="WhatsApp Business"
             >
           </a>
@@ -225,6 +227,8 @@
     <tbody>
       <tr>
 
+        <td></td>
+
         <td>
           <a
             href="https://laguait.cat/latdg"
@@ -233,14 +237,12 @@
             title="La TdG Pòdcast"
           >
             <img
-              src="audio/latdg_t.png"
+              src="latdg_t.png"
               alt="La TdG Pòdcast"
             >
           </a>
         </td>
 
-        <!-- Dues cel·les buides per mantenir el botó centrat -->
-        <td></td>
         <td></td>
 
       </tr>
@@ -250,9 +252,7 @@
 
 <script>
 
-  /* =====================================================
-     RECUPERACIÓ DE L'ÀUDIO
-     ===================================================== */
+  /* RECUPERACIÓ DE L'ÀUDIO */
 
   var p = new URLSearchParams(location.search);
 
@@ -263,9 +263,7 @@
   }
 
 
-  /* =====================================================
-     TÍTOL DINÀMIC
-     ===================================================== */
+  /* TÍTOL DINÀMIC */
 
   var titol = p.get('titol');
 
