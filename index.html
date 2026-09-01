@@ -41,33 +41,38 @@
     margin-bottom: 26px;
   }
 
-  /* BOTONS */
+  /* CONTENIDOR DELS 7 BOTONS */
   .xarxes {
-    width: 100%;
-    max-width: 700px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 14px;
+    width: 100%;
+    max-width: 400px;
   }
 
+  /* TOTS ELS BOTONS TENEN EXACTAMENT LA MATEIXA MIDA */
   .xarxes a {
     display: block;
     width: 100%;
-    max-width: 700px;
+    height: 135px;
+    border-radius: 18px;
+    overflow: hidden;
     text-decoration: none;
-    line-height: 0;
+    background: transparent;
   }
 
+  /* LES IMATGES S'ADAPTEN AL BOTÓ SENSE DEFORMAR-SE */
   .xarxes img {
     display: block;
     width: 100%;
-    height: auto;
-    border: 0;
+    height: 100%;
+    object-fit: contain;
   }
 
-  /* Adaptació per a mòbil */
-  @media (max-width: 600px) {
+  /* Adaptació per a pantalles petites */
+  @media (max-width: 480px) {
+
     html, body {
       padding: 20px 10px 30px;
     }
@@ -82,13 +87,19 @@
       margin-bottom: 18px;
     }
 
+    iframe {
+      height: 120px;
+      margin-bottom: 20px;
+    }
+
     .xarxes {
-      max-width: 100%;
-      gap: 10px;
+      max-width: 360px;
+      gap: 12px;
     }
 
     .xarxes a {
-      max-width: 100%;
+      height: 120px;
+      border-radius: 16px;
     }
   }
 </style>
@@ -96,120 +107,154 @@
 
 <body>
 
-  <!-- LOGOTIP -->
+  <!-- LOGOTIP DE LA TORRE DE GUAITA -->
   <img
     class="logo"
     src="logo.png"
     alt="La Torre de Guaita"
   >
 
-  <!-- TÍTOL -->
+  <!-- TÍTOL DE L'ÀUDIO -->
   <h1 id="titol">🔊 Escolta l'àudio</h1>
 
-  <!-- ÀUDIO -->
+  <!-- REPRODUCTOR / ÀUDIO -->
   <iframe
     id="f"
-    scrolling="no">
+    scrolling="no"
+    title="Reproductor d'àudio">
   </iframe>
 
-  <!-- BOTONS -->
+
+  <!-- =====================================================
+       SET BOTONS
+       ===================================================== -->
+
   <div class="xarxes">
 
-    <!-- X -->
+    <!-- 1. X -->
     <a
       href="https://x.com/laTdeG"
-      title="X — @latdeg"
+      title="X per rebre informació"
       target="_blank"
-      rel="noopener">
+      rel="noopener noreferrer"
+    >
       <img
-        src="twitter_t.png"
-        alt="X — @latdeg">
+        src="audio/twitter_t.png"
+        alt="X — @latdeg"
+      >
     </a>
 
-    <!-- WHATSAPP BUSINESS -->
+
+    <!-- 2. WHATSAPP BUSINESS -->
     <a
       href="https://wa.me/632042734"
-      title="WhatsApp Business — 632 042 734"
+      title="WhatsApp Business per escriure'ns"
       target="_blank"
-      rel="noopener">
+      rel="noopener noreferrer"
+    >
       <img
-        src="whatscontacte_t.png"
-        alt="WhatsApp Business — 632 042 734">
+        src="audio/whatscontacte_t.png"
+        alt="WhatsApp Business — 632 042 734"
+      >
     </a>
 
-    <!-- WHATSAPP CANAL -->
+
+    <!-- 3. WHATSAPP CANAL -->
     <a
       href="https://wa.me/channel/0029Vb7eGZSJZg4G6UhXkE2u"
-      title="WhatsApp — Canal"
+      title="Canal de WhatsApp per rebre informació"
       target="_blank"
-      rel="noopener">
+      rel="noopener noreferrer"
+    >
       <img
-        src="whatscanal_t.png"
-        alt="WhatsApp — Canal">
+        src="audio/whatscanal_t.png"
+        alt="WhatsApp — Canal"
+      >
     </a>
 
-    <!-- TELEGRAM CONTACTE -->
+
+    <!-- 4. TELEGRAM CONTACTE -->
     <a
       href="https://t.me/laTdG_contacte"
-      title="Telegram — Contacte"
+      title="Telegram per escriure'ns"
       target="_blank"
-      rel="noopener">
+      rel="noopener noreferrer"
+    >
       <img
-        src="telcontacte_t.png"
-        alt="Telegram — Contacte">
+        src="audio/telcontacte_t.png"
+        alt="Telegram — Contacte"
+      >
     </a>
 
-    <!-- TELEGRAM CANAL -->
+
+    <!-- 5. TELEGRAM CANAL -->
     <a
       href="https://t.me/laTdG_podcast"
-      title="Telegram — Canal"
+      title="Canal de Telegram per rebre informació"
       target="_blank"
-      rel="noopener">
+      rel="noopener noreferrer"
+    >
       <img
-        src="telcanal_t.png"
-        alt="Telegram — Canal">
+        src="audio/telcanal_t.png"
+        alt="Telegram — Canal"
+      >
     </a>
 
-    <!-- CORREU ELECTRÒNIC -->
+
+    <!-- 6. CORREU ELECTRÒNIC -->
     <a
       href="mailto:latdg@laguait.cat"
-      title="Correu electrònic — latdg@laguait.cat">
+      title="Enviar un correu electrònic"
+    >
       <img
-        src="correu_t.png"
-        alt="Correu electrònic — latdg@laguait.cat">
+        src="audio/correu_t.png"
+        alt="Correu electrònic — latdg@laguait.cat"
+      >
     </a>
 
-    <!-- PÒDCAST -->
+
+    <!-- 7. LA TDG PÒDCAST -->
     <a
       href="https://laguait.cat/latdg"
       title="La TdG Pòdcast"
       target="_blank"
-      rel="noopener">
+      rel="noopener noreferrer"
+    >
       <img
-        src="latdg_t.png"
-        alt="La TdG Pòdcast">
+        src="audio/latdg_t.png"
+        alt="La TdG Pòdcast"
+      >
     </a>
 
   </div>
 
 
 <script>
+
+  /* =====================================================
+     RECUPERACIÓ DE L'ÀUDIO
+     ===================================================== */
+
   var p = new URLSearchParams(location.search);
 
-  /* ÀUDIO */
   var s = p.get('src');
 
   if (s) {
     document.getElementById('f').src = s;
   }
 
-  /* TÍTOL */
+
+  /* =====================================================
+     TÍTOL DINÀMIC
+     ===================================================== */
+
   var titol = p.get('titol');
 
   if (titol) {
     document.getElementById('titol').textContent =
       '🗣️ Declaracions de ' + titol;
   }
+
 </script>
 
 </body>
