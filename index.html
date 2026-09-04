@@ -3,9 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light only">
 <title>La Torre de Guaita</title>
 
 <style>
+  html {
+    color-scheme: light only;
+  }
+
   html, body {
     margin: 0;
     min-height: 100%;
@@ -18,20 +23,17 @@
     box-sizing: border-box;
     text-align: center;
   }
-
   .logo {
     width: 180px;
     height: 180px;
     object-fit: contain;
     margin-bottom: 14px;
   }
-
   h1 {
     font-size: 1.3em;
     margin: 0 0 22px;
     color: #1a1a1a;
   }
-
 iframe {
   width: 100%;
   max-width: 960px;
@@ -41,9 +43,7 @@ iframe {
   margin-bottom: 26px;
   transition: height 0.15s ease;
 }
-
   /* TAULES DELS BOTONS */
-
   .taula-botons {
     width: 100%;
     max-width: 1050px;
@@ -52,7 +52,6 @@ iframe {
     margin: 0 auto 20px;
     background: transparent !important;
   }
-
   .taula-botons td {
     width: 33.33%;
     text-align: center;
@@ -61,15 +60,12 @@ iframe {
     padding: 0;
     background: transparent !important;
   }
-
   .taula-botons a {
     display: block;
     text-decoration: none;
     line-height: 0;
   }
-
   /* MIDA DE LES IMATGES */
-
   .taula-botons img {
     display: block;
     width: 80%;
@@ -79,27 +75,20 @@ iframe {
     border: 0 !important;
     box-shadow: none !important;
   }
-
   /* ESPAI ENTRE FILES */
-
   .fila-separacio td {
     height: 18px;
   }
-
   /* MÒBIL */
-
   @media (max-width: 600px) {
-
     body {
       padding-left: 8px;
       padding-right: 8px;
     }
-
     .taula-botons img {
       width: 90%;
       max-width: 280px;
     }
-
   }
 </style>
 </head>
