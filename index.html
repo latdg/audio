@@ -317,6 +317,19 @@ iframe {
   if (titol) {
     document.getElementById('titol').textContent =
       '🗣️ Declaracions de ' + titol;
+  } else {
+
+    // Si no hi ha un únic declarant (cas de diverses declaracions),
+    // el paràmetre "n" (nombre de fitxers) ens diu si cal parlar en
+    // plural o en singular.
+    var n = parseInt(p.get('n'), 10);
+
+    if (n && n > 1) {
+      document.getElementById('titol').textContent =
+        '🔊 Escolta els àudios';
+    }
+    // Si n és 1 (o no hi ha paràmetre n), es manté el text per defecte
+    // de l'HTML: "🔊 Escolta l'àudio".
   }
 
 
