@@ -34,7 +34,7 @@
 
 iframe {
   width: 100%;
-  max-width: 480px;
+  max-width: 640px;
   height: 130px;
   border: none;
   background: #cfe0b8;
@@ -118,18 +118,6 @@ iframe {
 
   <h1 id="titol">🔊 Escolta l'àudio</h1>
 
-// Ajustem l'alçada de l'iframe automàticament segons el contingut real
-// de la pàgina d'àudio (1, 2, 3... declaracions).
-window.addEventListener('message', function(event) {
-  if (
-    event.data &&
-    event.data.tipus === 'latdg-alcada' &&
-    typeof event.data.alcada === 'number'
-  ) {
-    document.getElementById('f').style.height = event.data.alcada + 'px';
-  }
-});
-  
   <!-- REPRODUCTOR -->
 
   <iframe
@@ -330,6 +318,26 @@ window.addEventListener('message', function(event) {
     document.getElementById('titol').textContent =
       '🗣️ Declaracions de ' + titol;
   }
+
+
+  /* =====================================================
+     ALÇADA DINÀMICA DE L'IFRAME
+     -----------------------------------------------------
+     La pàgina d'àudio (dins de l'iframe) ens envia la seva
+     alçada real via postMessage un cop carregada. Així
+     l'iframe s'ajusta sol tant si hi ha 1 declaració com
+     si n'hi ha 5, sense haver de tocar mai aquest fitxer.
+     ===================================================== */
+
+  window.addEventListener('message', function(event) {
+    if (
+      event.data &&
+      event.data.tipus === 'latdg-alcada' &&
+      typeof event.data.alcada === 'number'
+    ) {
+      document.getElementById('f').style.height = event.data.alcada + 'px';
+    }
+  });
 
 </script>
 
