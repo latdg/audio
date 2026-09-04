@@ -32,14 +32,15 @@
     color: #1a1a1a;
   }
 
-  iframe {
-    width: 100%;
-    max-width: 480px;
-    height: 130px;
-    border: none;
-    background: #cfe0b8;
-    margin-bottom: 26px;
-  }
+iframe {
+  width: 100%;
+  max-width: 480px;
+  height: 130px;
+  border: none;
+  background: #cfe0b8;
+  margin-bottom: 26px;
+  transition: height 0.15s ease;
+}
 
   /* TAULES DELS BOTONS */
 
@@ -117,6 +118,18 @@
 
   <h1 id="titol">🔊 Escolta l'àudio</h1>
 
+// Ajustem l'alçada de l'iframe automàticament segons el contingut real
+// de la pàgina d'àudio (1, 2, 3... declaracions).
+window.addEventListener('message', function(event) {
+  if (
+    event.data &&
+    event.data.tipus === 'latdg-alcada' &&
+    typeof event.data.alcada === 'number'
+  ) {
+    document.getElementById('f').style.height = event.data.alcada + 'px';
+  }
+});
+  
   <!-- REPRODUCTOR -->
 
   <iframe
