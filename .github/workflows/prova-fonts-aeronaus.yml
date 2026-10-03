@@ -1,0 +1,47 @@
+# =============================================================================
+# PROVA DE FONTS D'AERONAUS — La TdG · 03.10.2026
+# Comprova quines fonts responen des dels servidors de GitHub (Microsoft).
+# No toca el vigilant ni cap altre script. S'executa només a mà:
+# pestanya Actions > "Prova de fonts d'aeronaus" > Run workflow.
+# =============================================================================
+
+name: Prova de fonts d'aeronaus
+
+on:
+  workflow_dispatch:
+
+jobs:
+  prova:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Consultar les fonts
+        run: |
+          prova() {
+            nom="$1"
+            url="$2"
+            rm -f resposta.json
+            touch resposta.json
+            echo "=================================================="
+            echo "$nom"
+            res=$(curl -s -o resposta.json -w "%{http_code} %{time_total}" --max-time 30 \
+              -A "LaTdG-vigilant-aeronaus/1.0 (latdg@laguait.cat)" \
+              -H "Accept: application/json" "$url" || true)
+            echo "Resposta: HTTP ${res%% *} en ${res##* } segons"
+            n=$(jq '(.ac // .aircraft // .states // []) | length' resposta.json 2>/dev/null || echo "?")
+            echo "Aeronaus a uns 100 km: $n"
+            echo "Inici de la resposta:"
+            head -c 200 resposta.json || true
+            echo
+          }
+
+          # Fonts que ja funcionen des de Google (per comparar)
+          prova "adsb.lol (ja funciona, control)" "https://api.adsb.lol/v2/point/41.962/3.040/54"
+          prova "adsb.fi (ja funciona, control)" "https://opendata.adsb.fi/api/v2/lat/41.962/lon/3.040/dist/54"
+
+          # Fonts bloquejades des de Google
+          prova "ADSB One" "https://api.adsb.one/v2/point/41.962/3.040/54"
+          prova "OpenSky (sense compte)" "https://opensky-network.org/api/states/all?lamin=41.06&lomin=1.83&lamax=42.86&lomax=4.25"
+          prova "airplanes.live" "https://api.airplanes.live/v2/point/41.962/3.040/54"
+
+          echo "=================================================="
+          echo "Prova acabada."
