@@ -43,27 +43,38 @@ iframe {
   margin-bottom: 26px;
   transition: height 0.15s ease;
 }
+  /* TEXTOS ENTRE TAULES */
+  .text {
+    max-width: 760px;
+    margin: 0 auto 16px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #1a1a1a;
+  }
+  .text a {
+    color: #1a1a1a;
+  }
   /* TAULES DELS BOTONS */
   .taula-botons {
     width: 100%;
     max-width: 1050px;
     border-collapse: collapse;
     border: 0 !important;
-    margin: 0 auto 20px;
+    margin: 0 auto 24px;
     background: transparent !important;
   }
   .taula-botons td {
     width: 33.33%;
     text-align: center;
-    vertical-align: middle;
+    vertical-align: top;
     border: 0 !important;
-    padding: 0;
+    padding: 10px 4px;
     background: transparent !important;
   }
   .taula-botons a {
     display: block;
     text-decoration: none;
-    line-height: 0;
+    color: #1a1a1a;
   }
   /* MIDA DE LES ICONES */
   .taula-botons img {
@@ -74,9 +85,20 @@ iframe {
     border: 0 !important;
     box-shadow: none !important;
   }
-  /* ESPAI ENTRE FILES */
-  .fila-separacio td {
-    height: 18px;
+  /* TEXT SOTA LES ICONES */
+  .nom {
+    display: block;
+    margin-top: 6px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 1.3;
+  }
+  .detall {
+    display: block;
+    font-size: 14px;
+    color: #444;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
   }
   /* MÒBIL */
   @media (max-width: 600px) {
@@ -86,6 +108,12 @@ iframe {
     }
     .taula-botons img {
       height: 44px;
+    }
+    .nom {
+      font-size: 15px;
+    }
+    .detall {
+      font-size: 13px;
     }
   }
 </style>
@@ -114,213 +142,70 @@ iframe {
   </iframe>
 
 
+  <!-- =====================================================
+       TEXT: SEGUEIX-NOS
+       ===================================================== -->
+
+  <p class="text">
+    La TdG és un pòdcast informatiu de la Bisbal d'Empordà i pobles veïns.<br>
+    Pots seguir les nostres publicacions a:
+  </p>
+
+
+  <!-- =====================================================
+       TAULA 1: XARXES
+       ===================================================== -->
+
   <table class="taula-botons">
     <tbody>
 
-      <!-- =================================================
-           PRIMERA FILA
-           X · WHATSAPP CANAL · TELEGRAM CANAL
-           ================================================= -->
+      <!-- PRIMERA FILA: X · WHATSAPP CANAL · TELEGRAM CANAL -->
 
       <tr>
 
-        <!-- X -->
-
         <td>
-          <a
-            href="https://x.com/latdeg"
-            target="_blank"
-            rel="noopener"
-            title="Segueix-nos a X"
-          >
-            <img
-              src="https://cdn.simpleicons.org/x/000000"
-              alt="Segueix-nos a X"
-            >
+          <a href="https://x.com/latdeg" target="_blank" rel="noopener" title="Segueix-nos a X">
+            <img src="https://cdn.simpleicons.org/x/000000" alt="Segueix-nos a X">
+            <span class="nom">X</span>
+            <span class="detall">@latdeg</span>
           </a>
         </td>
 
-
-        <!-- WHATSAPP CANAL -->
-
         <td>
-          <a
-            href="https://wa.me/channel/0029Vb7eGZSJZg4G6UhXkE2u"
-            target="_blank"
-            rel="noopener"
-            title="Segueix-nos a WhatsApp"
-          >
-            <img
-              src="https://cdn.simpleicons.org/whatsapp/25D366"
-              alt="Segueix-nos a WhatsApp"
-            >
+          <a href="https://wa.me/channel/0029Vb7eGZSJZg4G6UhXkE2u" target="_blank" rel="noopener" title="Segueix-nos a WhatsApp">
+            <img src="https://cdn.simpleicons.org/whatsapp/25D366" alt="Segueix-nos a WhatsApp">
+            <span class="nom">WhatsApp</span>
+            <span class="detall">Canal</span>
           </a>
         </td>
 
-
-        <!-- TELEGRAM CANAL -->
-
         <td>
-          <a
-            href="https://t.me/laTdG_podcast"
-            target="_blank"
-            rel="noopener"
-            title="Segueix-nos a Telegram"
-          >
-            <img
-              src="https://cdn.simpleicons.org/telegram/26A5E4"
-              alt="Segueix-nos a Telegram"
-            >
+          <a href="https://t.me/laTdG_podcast" target="_blank" rel="noopener" title="Segueix-nos a Telegram">
+            <img src="https://cdn.simpleicons.org/telegram/26A5E4" alt="Segueix-nos a Telegram">
+            <span class="nom">Telegram</span>
+            <span class="detall">Canal</span>
           </a>
         </td>
 
       </tr>
 
-
-      <!-- ESPAI ENTRE FILES -->
-
-      <tr class="fila-separacio">
-        <td colspan="3"></td>
-      </tr>
-
-
-      <!-- =================================================
-           SEGONA FILA
-           BLUESKY · MASTODON
-           ================================================= -->
+      <!-- SEGONA FILA: BLUESKY · MASTODON -->
 
       <tr>
 
-        <!-- BLUESKY -->
-
         <td>
-          <a
-            href="https://bsky.app/profile/latdg-podcast.bsky.social"
-            target="_blank"
-            rel="noopener"
-            title="Segueix-nos a Bluesky"
-          >
-            <img
-              src="https://cdn.simpleicons.org/bluesky/1185FE"
-              alt="Segueix-nos a Bluesky"
-            >
+          <a href="https://bsky.app/profile/latdg-podcast.bsky.social" target="_blank" rel="noopener" title="Segueix-nos a Bluesky">
+            <img src="https://cdn.simpleicons.org/bluesky/1185FE" alt="Segueix-nos a Bluesky">
+            <span class="nom">Bluesky</span>
+            <span class="detall">@latdg-podcast</span>
           </a>
         </td>
 
-
-        <!-- MASTODON -->
-
         <td>
-          <a
-            href="https://mastodon.social/@latdg"
-            target="_blank"
-            rel="noopener"
-            title="Segueix-nos a Mastodon"
-          >
-            <img
-              src="https://cdn.simpleicons.org/mastodon/6364FF"
-              alt="Segueix-nos a Mastodon"
-            >
-          </a>
-        </td>
-
-        <td></td>
-
-      </tr>
-
-
-      <!-- ESPAI ENTRE FILES -->
-
-      <tr class="fila-separacio">
-        <td colspan="3"></td>
-      </tr>
-
-
-      <!-- =================================================
-           TERCERA FILA
-           CORREU · WHATSAPP CONTACTE · TELEGRAM CONTACTE
-           ================================================= -->
-
-      <tr>
-
-        <!-- CORREU -->
-
-        <td>
-          <a
-            href="mailto:latdg@laguait.cat"
-            title="Escriu-nos al correu electrònic"
-          >
-            <img
-              src="https://unpkg.com/lucide-static/icons/mail.svg"
-              alt="Escriu-nos al correu electrònic"
-            >
-          </a>
-        </td>
-
-
-        <!-- WHATSAPP CONTACTE -->
-
-        <td>
-          <a
-            href="https://wa.me/632042734"
-            target="_blank"
-            rel="noopener"
-            title="Escriu-nos a WhatsApp"
-          >
-            <img
-              src="https://cdn.simpleicons.org/whatsapp/25D366"
-              alt="Escriu-nos a WhatsApp"
-            >
-          </a>
-        </td>
-
-
-        <!-- TELEGRAM CONTACTE -->
-
-        <td>
-          <a
-            href="https://t.me/laTdG_contacte"
-            target="_blank"
-            rel="noopener"
-            title="Escriu-nos a Telegram"
-          >
-            <img
-              src="https://cdn.simpleicons.org/telegram/26A5E4"
-              alt="Escriu-nos a Telegram"
-            >
-          </a>
-        </td>
-
-      </tr>
-
-
-      <!-- ESPAI ENTRE FILES -->
-
-      <tr class="fila-separacio">
-        <td colspan="3"></td>
-      </tr>
-
-
-      <!-- =================================================
-           QUARTA FILA
-           LA TdG PÒDCAST
-           ================================================= -->
-
-      <tr>
-
-        <td></td>
-
-        <td>
-          <a
-            href="https://laguait.cat/latdg"
-            target="_blank"
-            rel="noopener"
-            title="Visita el pòdcast"
-          >
-            <img
-              src="https://unpkg.com/lucide-static/icons/podcast.svg"
-              alt="Visita el pòdcast"
-            >
+          <a href="https://mastodon.social/@latdg" target="_blank" rel="noopener" title="Segueix-nos a Mastodon">
+            <img src="https://cdn.simpleicons.org/mastodon/6364FF" alt="Segueix-nos a Mastodon">
+            <span class="nom">Mastodon</span>
+            <span class="detall">@latdg</span>
           </a>
         </td>
 
@@ -330,6 +215,86 @@ iframe {
 
     </tbody>
   </table>
+
+
+  <!-- =====================================================
+       TEXT: CONTACTE
+       ===================================================== -->
+
+  <p class="text">
+    Ens pots trucar al telèfon <b>632 042 734</b> per fer-nos arribar informació,
+    i també ens pots enviar àudios, fotografies o vídeos a través de:
+  </p>
+
+
+  <!-- =====================================================
+       TAULA 2: CONTACTE I PÒDCAST
+       ===================================================== -->
+
+  <table class="taula-botons">
+    <tbody>
+
+      <!-- CORREU · WHATSAPP CONTACTE · TELEGRAM CONTACTE -->
+
+      <tr>
+
+        <td>
+          <a href="mailto:latdg@laguait.cat" title="Escriu-nos al correu electrònic">
+            <img src="https://unpkg.com/lucide-static/icons/mail.svg" alt="Escriu-nos al correu electrònic">
+            <span class="nom">Correu electrònic</span>
+            <span class="detall">latdg@laguait.cat</span>
+          </a>
+        </td>
+
+        <td>
+          <a href="https://wa.me/632042734" target="_blank" rel="noopener" title="Escriu-nos a WhatsApp">
+            <img src="https://cdn.simpleicons.org/whatsapp/25D366" alt="Escriu-nos a WhatsApp">
+            <span class="nom">WhatsApp</span>
+            <span class="detall">Contacte</span>
+          </a>
+        </td>
+
+        <td>
+          <a href="https://t.me/laTdG_contacte" target="_blank" rel="noopener" title="Escriu-nos a Telegram">
+            <img src="https://cdn.simpleicons.org/telegram/26A5E4" alt="Escriu-nos a Telegram">
+            <span class="nom">Telegram</span>
+            <span class="detall">Contacte</span>
+          </a>
+        </td>
+
+      </tr>
+
+      <!-- LA TdG PÒDCAST -->
+
+      <tr>
+
+        <td></td>
+
+        <td>
+          <a href="https://laguait.cat/latdg" target="_blank" rel="noopener" title="Visita el pòdcast">
+            <img src="https://unpkg.com/lucide-static/icons/podcast.svg" alt="Visita el pòdcast">
+            <span class="nom">La TdG</span>
+            <span class="detall">Pòdcast</span>
+          </a>
+        </td>
+
+        <td></td>
+
+      </tr>
+
+    </tbody>
+  </table>
+
+
+  <!-- =====================================================
+       TEXT: ANUNCIS I SUPORT
+       ===================================================== -->
+
+  <p class="text">
+    Podem fer mencions publicitàries o introduir anuncis al pòdcast previ pagament.<br>
+    Si valores el projecte i vols ajudar a mantenir-lo: <strong>Bizum</strong> al 632 042 734 o
+    <a href="https://wise.com/pay/me/ignasicorneyo" target="_blank" rel="noopener"><strong>Wise</strong></a>.
+  </p>
 
 
 <script>
