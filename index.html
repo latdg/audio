@@ -43,13 +43,16 @@ iframe {
   margin-bottom: 26px;
   transition: height 0.15s ease;
 }
-  /* TEXTOS ENTRE TAULES */
+  /* TEXTOS ENTRE TAULES (TIRATS A L'ESQUERRA) */
   .text {
-    max-width: 760px;
+    width: 100%;
+    max-width: 1050px;
     margin: 0 auto 16px;
     font-size: 16px;
     line-height: 1.5;
     color: #1a1a1a;
+    text-align: left;
+    box-sizing: border-box;
   }
   .text a {
     color: #1a1a1a;
@@ -143,6 +146,31 @@ iframe {
 
 
   <!-- =====================================================
+       LA TdG PÒDCAST (PRIMER DE TOT)
+       ===================================================== -->
+
+  <table class="taula-botons">
+    <tbody>
+      <tr>
+
+        <td></td>
+
+        <td>
+          <a href="https://laguait.cat/latdg" target="_blank" rel="noopener" title="Visita el pòdcast">
+            <img src="https://unpkg.com/lucide-static/icons/podcast.svg" alt="Visita el pòdcast">
+            <span class="nom">La TdG</span>
+            <span class="detall">Pòdcast</span>
+          </a>
+        </td>
+
+        <td></td>
+
+      </tr>
+    </tbody>
+  </table>
+
+
+  <!-- =====================================================
        TEXT: SEGUEIX-NOS
        ===================================================== -->
 
@@ -153,7 +181,7 @@ iframe {
 
 
   <!-- =====================================================
-       TAULA 1: XARXES
+       TAULA: XARXES
        ===================================================== -->
 
   <table class="taula-botons">
@@ -228,7 +256,7 @@ iframe {
 
 
   <!-- =====================================================
-       TAULA 2: CONTACTE I PÒDCAST
+       TAULA: CONTACTE
        ===================================================== -->
 
   <table class="taula-botons">
@@ -261,24 +289,6 @@ iframe {
             <span class="detall">Contacte</span>
           </a>
         </td>
-
-      </tr>
-
-      <!-- LA TdG PÒDCAST -->
-
-      <tr>
-
-        <td></td>
-
-        <td>
-          <a href="https://laguait.cat/latdg" target="_blank" rel="noopener" title="Visita el pòdcast">
-            <img src="https://unpkg.com/lucide-static/icons/podcast.svg" alt="Visita el pòdcast">
-            <span class="nom">La TdG</span>
-            <span class="detall">Pòdcast</span>
-          </a>
-        </td>
-
-        <td></td>
 
       </tr>
 
