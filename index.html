@@ -4,371 +4,169 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light only">
-<title>La Torre de Guaita</title>
+<title>La TdG · Àudio</title>
 
 <style>
-  html {
-    color-scheme: light only;
-  }
+/* =====================================================
+   MATEIX ESTIL QUE «LA TdG AMPLIADA» I «LA TdG REDACCIÓ»
+   ===================================================== */
+:root{--fons:#f6f5f2;--targeta:#fff;--text:#1d1d1b;--suau:#6b6b66;--linia:#e3e1db;--accent:#b4462c}
+html{color-scheme:light only}
+*{box-sizing:border-box}
+body{margin:0;background:var(--fons);color:var(--text);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+header,main,footer{max-width:1100px;margin:0 auto;padding-left:16px;padding-right:16px}
+header{padding-top:24px}
+h1{margin:0;font-size:1.6rem}
+.sub{color:var(--suau);margin:4px 0 12px}
+a{color:var(--accent)}
 
-  html, body {
-    margin: 0;
-    min-height: 100%;
-    background: #cfe0b8;
-    font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 28px 16px 40px;
-    box-sizing: border-box;
-    text-align: center;
-  }
-  .logo {
-    width: 180px;
-    height: 180px;
-    object-fit: contain;
-    margin-bottom: 14px;
-  }
-  h1 {
-    font-size: 1.3em;
-    margin: 0 0 22px;
-    color: #1a1a1a;
-  }
-iframe {
-  width: 100%;
-  max-width: 960px;
-  height: 380px;
-  border: none;
-  background: #cfe0b8;
-  margin-bottom: 26px;
-  transition: height 0.15s ease;
+/* CAPÇALERA: icona del pòdcast + títol */
+.capcalera{display:flex;align-items:center;gap:16px}
+.podcast{display:flex;flex-direction:column;align-items:center;text-decoration:none;color:var(--text);line-height:1.1;flex-shrink:0}
+.podcast svg{display:block;width:50px;height:50px}
+
+/* BLOCS (targetes) */
+main{display:grid;gap:16px;padding-bottom:16px}
+section{background:var(--targeta);border:1px solid var(--linia);border-radius:12px;padding:16px;min-width:0}
+h2{margin:0 0 8px;font-size:1.1rem}
+section p{margin:0 0 12px}
+
+/* REPRODUCTOR */
+iframe{display:block;width:100%;height:380px;border:none;background:var(--targeta);transition:height .15s ease}
+
+/* BOTONS DE XARXES I CONTACTE */
+.botons{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:4px 0 0;padding:0;list-style:none}
+.botons a{display:block;text-align:center;text-decoration:none;color:var(--text);padding:10px 4px;border-radius:10px}
+.botons a:hover{background:var(--fons)}
+.botons a:hover .nom{color:var(--accent)}
+.botons img{display:block;height:44px;width:auto;margin:0 auto}
+.nom{display:block;margin-top:6px;font-weight:700;font-size:.95rem;line-height:1.3}
+.detall{display:block;font-size:.85rem;color:var(--suau);line-height:1.3;overflow-wrap:anywhere}
+
+footer{color:var(--suau);font-size:.85rem;padding-bottom:32px}
+
+@media (max-width:600px){
+  .botons img{height:38px}
+  .nom{font-size:.9rem}
+  .detall{font-size:.8rem}
 }
-  /* TEXTOS ENTRE TAULES (TIRATS A L'ESQUERRA) */
-  .text {
-    width: 100%;
-    max-width: 1050px;
-    margin: 0 auto 16px;
-    font-size: 16px;
-    line-height: 1.5;
-    color: #1a1a1a;
-    text-align: left;
-    box-sizing: border-box;
-  }
-  .text a {
-    color: #1a1a1a;
-  }
-  /* TAULES DELS BOTONS */
-  .taula-botons {
-    width: 100%;
-    max-width: 1050px;
-    border-collapse: collapse;
-    border: 0 !important;
-    margin: 0 auto 24px;
-    background: transparent !important;
-  }
-  .taula-botons td {
-    width: 33.33%;
-    text-align: center;
-    vertical-align: top;
-    border: 0 !important;
-    padding: 10px 4px;
-    background: transparent !important;
-  }
-  .taula-botons a {
-    display: block;
-    text-decoration: none;
-    color: #1a1a1a;
-  }
-  /* MIDA DE LES ICONES */
-  .taula-botons img {
-    display: block;
-    width: auto;
-    height: 50px;
-    margin: 0 auto;
-    border: 0 !important;
-    box-shadow: none !important;
-  }
-  /* TEXT SOTA LES ICONES */
-  .nom {
-    display: block;
-    margin-top: 6px;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 1.3;
-  }
-  .detall {
-    display: block;
-    font-size: 14px;
-    color: #444;
-    line-height: 1.3;
-    overflow-wrap: anywhere;
-  }
-  /* MÒBIL */
-  @media (max-width: 600px) {
-    body {
-      padding-left: 8px;
-      padding-right: 8px;
-    }
-    .taula-botons img {
-      height: 44px;
-    }
-    .nom {
-      font-size: 15px;
-    }
-    .detall {
-      font-size: 13px;
-    }
-  }
 </style>
 </head>
 
 <body>
 
-  <!-- LOGOTIP -->
+<header>
+  <div class="capcalera">
+    <a class="podcast" href="https://laguait.cat/latdg" target="_blank" rel="noopener" title="Visita el pòdcast">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Visita el pòdcast">
+        <path d="M2 11a10 10 0 015-8.662" stroke="#e30613"/>
+        <path d="M22 11a10 10 0 00-5-8.662" stroke="#e30613"/>
+        <path d="M6 11a6 6 0 013-5.197" stroke="currentColor"/>
+        <path d="M18 11a6 6 0 00-3-5.197" stroke="currentColor"/>
+        <rect x="10" y="9" width="4" height="8" rx="2" stroke="currentColor"/>
+        <path d="M12 17v4" stroke="currentColor"/>
+        <path d="M9 21h6" stroke="currentColor"/>
+      </svg>
+    </a>
+    <h1 id="titol">Escolta l'àudio</h1>
+  </div>
+  <p class="sub">La Torre de Guaita · la Bisbal d'Empordà i pobles veïns</p>
+</header>
 
-<img
-  class="logo"
-  src="https://latdg.github.io/audio/logo.png"
-  alt="La Torre de Guaita"
->
+<main>
 
-  <!-- TÍTOL -->
+  <!-- REPRODUCTOR (la pàgina del publicador va aquí dins) -->
+  <section>
+    <iframe id="f" scrolling="no" title="Reproductor d'àudio"></iframe>
+  </section>
 
-  <h1 id="titol">🔊 Escolta l'àudio</h1>
+  <!-- QUI SOM I XARXES -->
+  <section>
+    <h2>La TdG</h2>
+    <p>
+      La TdG és un butlletí informatiu de la Bisbal d'Empordà i pobles veïns que edita i presenta <a href="https://ignasicorney.wixsite.com/quisoc">Ignasi Corney Oller</a>, vinculat a la comunicació local des que tenia 16 anys, primer a la revista <em>El Drac</em> i, uns mesos més tard, a <em>Ràdio Bisbal</em>. A més de col·laborar en diversos mitjans, va treballar a <em>Ràdio Costa Brava</em>, va ser corresponsal de <em>Diari de Girona</em> entre 2000 i 2007 i va ser editor de continguts des de 2005 a 2017 de <em>totbisbal.com</em>, un portal ciutadà amb informació i serveis que contenia un mitjà, una televisió i una ràdio digitals.
+    </p>
+    <p>
+      Aquest espai cerca que l'oient entengui en poc temps què ha passat i què passarà. Per analogia, una torre de guaita és un lloc de vigilància avançat que ocupa algú que alerta d'allò que veu.
+    </p>
+    <p>Trobaràs les nostres publicacions i actualitzacions a:</p>
 
-  <!-- REPRODUCTOR -->
+    <ul class="botons">
+      <li><a href="https://wa.me/channel/0029Vb7eGZSJZg4G6UhXkE2u" target="_blank" rel="noopener" title="Segueix-nos a WhatsApp">
+        <img src="https://cdn.simpleicons.org/whatsapp/25D366" alt=""><span class="nom">WhatsApp</span><span class="detall">Canal</span></a></li>
+      <li><a href="https://t.me/laTdG_podcast" target="_blank" rel="noopener" title="Segueix-nos a Telegram">
+        <img src="https://cdn.simpleicons.org/telegram/26A5E4" alt=""><span class="nom">Telegram</span><span class="detall">Canal</span></a></li>
+      <li><a href="https://x.com/latdeg" target="_blank" rel="noopener" title="Segueix-nos a X">
+        <img src="https://cdn.simpleicons.org/x/000000" alt=""><span class="nom">X</span><span class="detall">@latdeg</span></a></li>
+      <li><a href="https://bsky.app/profile/latdg-podcast.bsky.social" target="_blank" rel="noopener" title="Segueix-nos a Bluesky">
+        <img src="https://cdn.simpleicons.org/bluesky/1185FE" alt=""><span class="nom">Bluesky</span><span class="detall">@latdg-podcast</span></a></li>
+      <li><a href="https://mastodon.social/@latdg" target="_blank" rel="noopener" title="Segueix-nos a Mastodon">
+        <img src="https://cdn.simpleicons.org/mastodon/6364FF" alt=""><span class="nom">Mastodon</span><span class="detall">@latdg</span></a></li>
+      <li><a href="https://www.facebook.com/latdg.podcast" target="_blank" rel="noopener" title="Segueix-nos a Facebook">
+        <img src="https://cdn.simpleicons.org/facebook/0866FF" alt=""><span class="nom">Facebook</span><span class="detall">@latdg.podcast</span></a></li>
+    </ul>
+  </section>
 
-  <iframe
-    id="f"
-    scrolling="no"
-    title="Reproductor d'àudio">
-  </iframe>
+  <!-- CONTACTE -->
+  <section>
+    <h2>Contacte</h2>
+    <p>
+      Ens pots trucar al telèfon <b>632 042 734</b> per fer-nos arribar informació,
+      i també ens pots enviar àudios, fotografies o vídeos per:
+    </p>
+    <ul class="botons">
+      <li><a href="mailto:latdg@laguait.cat" title="Escriu-nos al correu electrònic">
+        <img src="https://unpkg.com/lucide-static/icons/mail.svg" alt=""><span class="nom">Correu electrònic</span><span class="detall">latdg@laguait.cat</span></a></li>
+      <li><a href="https://wa.me/34632042734" target="_blank" rel="noopener" title="Escriu-nos a WhatsApp">
+        <img src="https://cdn.simpleicons.org/whatsapp/25D366" alt=""><span class="nom">WhatsApp</span><span class="detall">Contacte</span></a></li>
+      <li><a href="https://t.me/laTdG_contacte" target="_blank" rel="noopener" title="Escriu-nos a Telegram">
+        <img src="https://cdn.simpleicons.org/telegram/26A5E4" alt=""><span class="nom">Telegram</span><span class="detall">Contacte</span></a></li>
+    </ul>
+  </section>
 
+  <!-- ANUNCIS I SUPORT -->
+  <section>
+    <h2>Anuncis i suport</h2>
+    <p>Podem fer mencions publicitàries o introduir anuncis al pòdcast previ pagament.</p>
+    <p style="margin:0">
+      Si valores el projecte, ens pots ajudar a mantenir-lo via <strong>Bizum</strong> (632 042 734) o
+      <a href="https://wise.com/pay/me/ignasicorneyo" target="_blank" rel="noopener"><strong>Wise</strong></a>.
+    </p>
+  </section>
 
-  <!-- =====================================================
-       LA TdG PÒDCAST (PRIMER DE TOT)
-       ===================================================== -->
+</main>
 
-  <table class="taula-botons">
-    <tbody>
-      <tr>
-
-        <td></td>
-
-        <td>
-          <a href="https://laguait.cat/latdg" target="_blank" rel="noopener" title="Visita el pòdcast">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Visita el pòdcast" style="display: block; width: 50px; height: 50px; margin: 0 auto;">
-              <path d="M2 11a10 10 0 015-8.662" stroke="#e30613"/>
-              <path d="M22 11a10 10 0 00-5-8.662" stroke="#e30613"/>
-              <path d="M6 11a6 6 0 013-5.197" stroke="#000000"/>
-              <path d="M18 11a6 6 0 00-3-5.197" stroke="#000000"/>
-              <rect x="10" y="9" width="4" height="8" rx="2" stroke="#000000"/>
-              <path d="M12 17v4" stroke="#000000"/>
-              <path d="M9 21h6" stroke="#000000"/>
-            </svg>
-            <span class="nom">La TdG</span>
-            <span class="detall">Pòdcast</span>
-          </a>
-        </td>
-
-        <td></td>
-
-      </tr>
-    </tbody>
-  </table>
-
-
-  <!-- =====================================================
-       TEXT: SEGUEIX-NOS
-       ===================================================== -->
-
-  <p class="text">
-    La TdG és un butlletí informatiu de la Bisbal d'Empordà i pobles veïns que edita i presenta <a href="https://ignasicorney.wixsite.com/quisoc">Ignasi Corney Oller</a>, vinculat a la comunicació local des que tenia 16 anys, primer a la revista <em>El Drac</em> i, uns mesos més tard, a <em>Ràdio Bisbal</em>. A més de col·laborar en diversos mitjans, va treballar a <em>Ràdio Costa Brava</em>, va ser corresponsal de <em>Diari de Girona</em> entre 2000 i 2007 i va ser editor de continguts des de 2005 a 2017 de <em>totbisbal.com</em>, un portal ciutadà amb informació i serveis que contenia un mitjà, una televisió i una ràdio digitals.<br><br>
-    Aquest espai cerca que l'oient entengui en poc temps què ha passat i què passarà. Per analogia, una torre de guaita és un lloc de vigilància avançat que ocupa algú que alerta d'allò que veu.  <br><br>
-    Trobaràs les nostres publicacions i actualitzacions a:
-  </p>
-
-
-  <!-- =====================================================
-       TAULA: XARXES
-       ===================================================== -->
-
-  <table class="taula-botons">
-    <tbody>
-
-      <!-- PRIMERA FILA: X · WHATSAPP CANAL · TELEGRAM CANAL -->
-
-      <tr>
-
-        <td>
-          <a href="https://x.com/latdeg" target="_blank" rel="noopener" title="Segueix-nos a X">
-            <img src="https://cdn.simpleicons.org/x/000000" alt="Segueix-nos a X">
-            <span class="nom">X</span>
-            <span class="detall">@latdeg</span>
-          </a>
-        </td>
-
-        <td>
-          <a href="https://wa.me/channel/0029Vb7eGZSJZg4G6UhXkE2u" target="_blank" rel="noopener" title="Segueix-nos a WhatsApp">
-            <img src="https://cdn.simpleicons.org/whatsapp/25D366" alt="Segueix-nos a WhatsApp">
-            <span class="nom">WhatsApp</span>
-            <span class="detall">Canal</span>
-          </a>
-        </td>
-
-        <td>
-          <a href="https://t.me/laTdG_podcast" target="_blank" rel="noopener" title="Segueix-nos a Telegram">
-            <img src="https://cdn.simpleicons.org/telegram/26A5E4" alt="Segueix-nos a Telegram">
-            <span class="nom">Telegram</span>
-            <span class="detall">Canal</span>
-          </a>
-        </td>
-
-      </tr>
-
-      <!-- SEGONA FILA: BLUESKY · MASTODON · FACEBOOK -->
-
-      <tr>
-
-        <td>
-          <a href="https://bsky.app/profile/latdg-podcast.bsky.social" target="_blank" rel="noopener" title="Segueix-nos a Bluesky">
-            <img src="https://cdn.simpleicons.org/bluesky/1185FE" alt="Segueix-nos a Bluesky">
-            <span class="nom">Bluesky</span>
-            <span class="detall">@latdg-podcast</span>
-          </a>
-        </td>
-
-        <td>
-          <a href="https://mastodon.social/@latdg" target="_blank" rel="noopener" title="Segueix-nos a Mastodon">
-            <img src="https://cdn.simpleicons.org/mastodon/6364FF" alt="Segueix-nos a Mastodon">
-            <span class="nom">Mastodon</span>
-            <span class="detall">@latdg</span>
-          </a>
-        </td>
-
-        <td>
-          <a href="https://www.facebook.com/latdg.podcast" target="_blank" rel="noopener" title="Segueix-nos a Facebook">
-            <img src="https://cdn.simpleicons.org/facebook/0866FF" alt="Segueix-nos a Facebook">
-            <span class="nom">Facebook</span>
-            <span class="detall">@latdg.podcast</span>
-          </a>
-        </td>
-
-      </tr>
-
-    </tbody>
-  </table>
-
-
-  <!-- =====================================================
-       TEXT: CONTACTE
-       ===================================================== -->
-
-  <p class="text">
-    Ens pots trucar al telèfon <b>632 042 734</b> per fer-nos arribar informació,
-    i també ens pots enviar àudios, fotografies o vídeos per:
-  </p>
-
-
-  <!-- =====================================================
-       TAULA: CONTACTE
-       ===================================================== -->
-
-  <table class="taula-botons">
-    <tbody>
-
-      <!-- CORREU · WHATSAPP CONTACTE · TELEGRAM CONTACTE -->
-
-      <tr>
-
-        <td>
-          <a href="mailto:latdg@laguait.cat" title="Escriu-nos al correu electrònic">
-            <img src="https://unpkg.com/lucide-static/icons/mail.svg" alt="Escriu-nos al correu electrònic">
-            <span class="nom">Correu electrònic</span>
-            <span class="detall">latdg@laguait.cat</span>
-          </a>
-        </td>
-
-        <td>
-          <a href="https://wa.me/34632042734" target="_blank" rel="noopener" title="Escriu-nos a WhatsApp">
-            <img src="https://cdn.simpleicons.org/whatsapp/25D366" alt="Escriu-nos a WhatsApp">
-            <span class="nom">WhatsApp</span>
-            <span class="detall">Contacte</span>
-          </a>
-        </td>
-
-        <td>
-          <a href="https://t.me/laTdG_contacte" target="_blank" rel="noopener" title="Escriu-nos a Telegram">
-            <img src="https://cdn.simpleicons.org/telegram/26A5E4" alt="Escriu-nos a Telegram">
-            <span class="nom">Telegram</span>
-            <span class="detall">Contacte</span>
-          </a>
-        </td>
-
-      </tr>
-
-    </tbody>
-  </table>
-
-
-  <!-- =====================================================
-       TEXT: ANUNCIS I SUPORT
-       ===================================================== -->
-
-  <p class="text">
-    Podem fer mencions publicitàries o introduir anuncis al pòdcast previ pagament.<br>
-    <span style="color: #c4161c;">Si valores el projecte, ens pots ajudar a mantenir-lo via <strong>Bizum</strong> (632 042 734) o <a style="color: #c4161c;" href="https://wise.com/pay/me/ignasicorneyo" target="_blank" rel="noopener"><strong>Wise</strong></a>.</span>
-  </p>
+<footer>La Torre de Guaita · laguait.cat/latdg</footer>
 
 <script>
-
   /* =====================================================
-     RECUPERAR L'ÀUDIO
+     ÀUDIO: el publicador envia la pàgina a ?src=
      ===================================================== */
-
   var p = new URLSearchParams(location.search);
-
   var s = p.get('src');
-
   if (s) {
     document.getElementById('f').src = s;
   }
 
-
   /* =====================================================
-     TÍTOL DINÀMIC
+     TÍTOL DINÀMIC (el publicador envia titol= o n=)
      ===================================================== */
-
+  var t = document.getElementById('titol');
   var titol = p.get('titol');
+  var n = parseInt(p.get('n'), 10);
 
   if (titol) {
-    document.getElementById('titol').textContent =
-      '🗣️ Declaracions de ' + titol;
+    t.textContent = 'Declaracions de ' + titol;
+  } else if (n && n > 1) {
+    t.textContent = 'Escolta els àudios';
   } else {
-
-    // Si no hi ha un únic declarant (cas de diverses declaracions),
-    // el paràmetre "n" (nombre de fitxers) ens diu si cal parlar en
-    // plural o en singular.
-    var n = parseInt(p.get('n'), 10);
-
-    if (n && n > 1) {
-      document.getElementById('titol').textContent =
-        '🔊 Escolta els àudios';
-    }
-    // Si n és 1 (o no hi ha paràmetre n), es manté el text per defecte
-    // de l'HTML: "🔊 Escolta l'àudio".
+    t.textContent = "Escolta l'àudio";
   }
-
+  document.title = 'La TdG · ' + t.textContent;
 
   /* =====================================================
-     ALÇADA DINÀMICA DE L'IFRAME
-     -----------------------------------------------------
-     La pàgina d'àudio (dins de l'iframe) ens envia la seva
-     alçada real via postMessage un cop carregada. Així
-     l'iframe s'ajusta sol tant si hi ha 1 declaració com
-     si n'hi ha 5, sense haver de tocar mai aquest fitxer.
+     ALÇADA DINÀMICA DE L'IFRAME (missatge del publicador)
      ===================================================== */
-
   window.addEventListener('message', function(event) {
     if (
       event.data &&
@@ -378,7 +176,6 @@ iframe {
       document.getElementById('f').style.height = event.data.alcada + 'px';
     }
   });
-
 </script>
 
 </body>
