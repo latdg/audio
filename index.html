@@ -170,6 +170,16 @@ footer{color:var(--suau);font-size:.85rem;padding-bottom:32px}
     ) {
       document.getElementById('f').style.height = event.data.alcada + 'px';
     }
+    // Canvi 05.11.2026: títol de la fitxa de La TdG fonoteca (si està revisada).
+    if (
+      event.data &&
+      event.data.tipus === 'latdg-titol' &&
+      typeof event.data.titol === 'string' &&
+      event.data.titol.trim()
+    ) {
+      t.textContent = event.data.titol.trim().slice(0, 150);
+      document.title = 'La TdG · ' + t.textContent;
+    }
   });
 </script>
 
