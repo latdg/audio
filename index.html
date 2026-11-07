@@ -35,6 +35,27 @@ section p{margin:0 0 12px}
 /* REPRODUCTOR */
 iframe{display:block;width:100%;height:380px;border:none;background:var(--targeta);transition:height .15s ease}
 
+/* 07.11.2026: icones de la dreta (clau i fonoteca) */
+.capcalera .icones{margin-left:auto;display:flex;gap:12px;align-items:center;flex-shrink:0}
+.capcalera .candau{font-size:1.5rem;line-height:1;background:none;border:0;padding:0;cursor:pointer}
+
+/* 07.11.2026: FITXA DE L'ÀUDIO (la mateixa de La TdG fonoteca) */
+#fitxes{display:grid;gap:12px}
+.fitxa{background:var(--fons);border:1px solid var(--linia);border-left:4px solid var(--accent);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.fitxa .cap{display:flex;flex-wrap:wrap;gap:4px 12px;color:var(--suau);font-size:.85rem;align-items:center}
+.fitxa .cap .eines{margin-left:auto}
+.fitxa h2{margin:0;font-size:1.25rem;line-height:1.3}
+.fitxa .qui{font-weight:700}
+.fitxa .desc{font-size:.95rem;line-height:1.5}
+.fitxa .desc p{margin:0 0 .5em}.fitxa .desc p:last-child{margin-bottom:0}
+.fitxa audio{width:100%}
+.fitxa .peu{font-size:.85rem}
+.nota{color:var(--suau);font-size:.85rem;margin:0}
+.fila{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+button{font:inherit;font-size:.95rem;border:1px solid var(--linia);border-radius:8px;padding:6px 12px;background:var(--targeta);color:var(--text);cursor:pointer}
+button.principal{background:var(--accent);border-color:var(--accent);color:#fff}
+input[type=password]{font:inherit;padding:6px 9px;border:1px solid var(--linia);border-radius:8px}
+
 /* BOTONS DE XARXES I CONTACTE */
 .botons{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:4px 0 0;padding:0;list-style:none}
 .botons a{display:block;text-align:center;text-decoration:none;color:var(--text);padding:10px 4px;border-radius:10px}
@@ -74,16 +95,33 @@ footer{color:var(--suau);font-size:.85rem;padding-bottom:32px}
       </svg>
     </a>
     <h1 id="titol">Escolta l'àudio</h1>
-    <a class="acces" href="https://latdg.github.io/tauler/fonoteca/" title="La TdG fonoteca: tots els àudios per tornar-los a escoltar" aria-label="La TdG fonoteca">🎧</a>
+    <span class="icones">
+      <button type="button" class="candau" id="candau" title="Edita la fitxa (amb clau)" aria-label="Edita la fitxa (amb clau)">🔒</button>
+      <a class="acces" href="https://latdg.github.io/tauler/fonoteca/" title="La TdG fonoteca: tots els àudios per tornar-los a escoltar" aria-label="La TdG fonoteca">🎙️</a>
+    </span>
   </div>
   <p class="sub">La Torre de Guaita · Pàgina d'àudios i declaracions</p>
 </header>
 
 <main>
 
-  <!-- REPRODUCTOR (la pàgina del publicador va aquí dins) -->
-  <section>
-    <iframe id="f" scrolling="no" title="Reproductor d'àudio"></iframe>
+  <!-- 07.11.2026: CLAU per editar les fitxes (la dels llamps). Només es veu si es clica el 🔒. -->
+  <section id="clauBox" hidden>
+    <h2>🔒 Clau</h2>
+    <div class="fila">
+      <input type="password" id="pin" placeholder="Clau" autocomplete="current-password" size="10">
+      <button type="button" id="entra" class="principal">Entra</button>
+      <label class="fila" style="gap:4px"><input type="checkbox" id="recorda"> Recorda la clau en aquest navegador</label>
+    </div>
+    <p class="nota" id="clauEstat"></p>
+  </section>
+
+  <!-- 07.11.2026: FITXES DELS ÀUDIOS (títol de l'acte, qui parla, descripció i
+       reproductor). La fitxa és la mateixa de La TdG fonoteca i del publicador. -->
+  <section id="fitxes">
+    <p class="nota">Carregant…</p>
+    <!-- Si l'àudio encara no és a GitHub, el reproductor de sempre (publicador). -->
+    <iframe id="f" scrolling="no" title="Reproductor d'àudio" hidden></iframe>
   </section>
 
   <!-- QUI SOM I XARXES -->
@@ -133,34 +171,171 @@ footer{color:var(--suau);font-size:.85rem;padding-bottom:32px}
 
 <footer>Aquest espai és una gentilesa dels serveis informatius de la Bisbal d'Empordà i pobles veïns.</footer>
 
+<script src="https://latdg.github.io/tauler/fonoteca/fitxa-audio.js?v=1"></script>
 <script>
   /* =====================================================
      ÀUDIO: el publicador envia la pàgina a ?src=
+     (l'adreça del reproductor d'Apps Script, amb f=fitxer i t=qui parla)
+
+     07.11.2026: la pàgina pinta ella mateixa una FITXA per a cada àudio, amb
+     el títol de l'acte, qui parla, la descripció i el reproductor. Les dades
+     són les de la fitxa de La TdG fonoteca (dades/fonoteca.json), la mateixa
+     que s'omple al publicador i que es pot editar aquí (🔒) i a la fonoteca.
+     El títol de la pàgina NO canvia: «Escolta l'àudio» o «Escolta els àudios».
+     L'àudio es carrega de GitHub (fonoteca o fitxers comprimits); si encara
+     no hi és, es fa servir el reproductor de sempre del publicador.
      ===================================================== */
+  var FA = window.FitxaAudio;
   var p = new URLSearchParams(location.search);
-  var s = p.get('src');
-  if (s) {
-    document.getElementById('f').src = s;
-  }
-
-  /* =====================================================
-     TÍTOL DINÀMIC (el publicador envia titol= o n=)
-     ===================================================== */
+  var s = p.get('src') || '';
   var t = document.getElementById('titol');
-  var titol = p.get('titol');
-  var n = parseInt(p.get('n'), 10);
+  var CLAU_DESADA = 'llampsPin';
+  var PIN = '', CATAL = { audios: [] }, INV = { audios: [] }, ITEMS = [];
 
-  if (titol) {
-    t.textContent = 'Declaracions de ' + titol;
-  } else if (n && n > 1) {
-    t.textContent = 'Escolta els àudios';
-  } else {
-    t.textContent = "Escolta l'àudio";
-  }
+  var fitxers = [], quiEnllac = [];
+  try {
+    var u = new URL(s);
+    fitxers = u.searchParams.getAll('f').map(function (x) { return x.trim(); }).filter(Boolean);
+    quiEnllac = u.searchParams.getAll('t');
+  } catch (e) {}
+
+  var n = fitxers.length || parseInt(p.get('n'), 10) || 1;
+  t.textContent = n > 1 ? 'Escolta els àudios' : "Escolta l'àudio";
   document.title = 'La TdG · ' + t.textContent;
+
+  function iframeDeSempre() {
+    var f = document.getElementById('f');
+    if (s && !f.src) f.src = s;
+    f.hidden = false;
+  }
+
+  function existeix(url) {
+    return fetch(url, { method: 'HEAD', cache: 'no-store' }).then(function (r) { return r.ok; }).catch(function () { return false; });
+  }
+
+  async function carrega() {
+    if (!FA || !fitxers.length) { document.querySelector('#fitxes .nota').remove(); iframeDeSempre(); return; }
+    var r = await Promise.allSettled([FA.baixaJson(FA.CATALEG), FA.baixaJson(FA.INVENTARI)]);
+    if (!PIN) CATAL = r[0].status === 'fulfilled' ? r[0].value : { audios: [] };
+    INV = r[1].status === 'fulfilled' ? r[1].value : { audios: [] };
+    ITEMS = await Promise.all(fitxers.map(async function (f, i) {
+      var clau = FA.nomComprimit(f), audio = FA.esAudio(f), url = '';
+      if (audio) {
+        var arx = (INV.audios || []).find(function (x) { return x.fitxer_original === clau; });
+        if (arx) url = FA.FONOTECA_AUDIOS + arx.fitxer;
+        else if (await existeix(FA.COMPRIMITS + encodeURIComponent(clau))) url = FA.COMPRIMITS + encodeURIComponent(clau);
+      }
+      return { fitxer: f, clau: clau, audio: audio, url: url, qui: String(quiEnllac[i] || '').trim() };
+    }));
+    pinta();
+  }
+
+  function fitxaDe(it) {
+    return (CATAL.audios || []).find(function (x) { return x.fitxer === it.clau && !x.eliminat; }) || null;
+  }
+
+  function pinta() {
+    var caixa = document.getElementById('fitxes'), iframe = document.getElementById('f');
+    var directe = ITEMS.length && ITEMS.every(function (it) { return it.audio && it.url; });
+    caixa.querySelectorAll('.fitxa, .nota').forEach(function (x) { x.remove(); });
+    ITEMS.forEach(function (it, i) {
+      var f = fitxaDe(it) || {};
+      var qui = (f.qui && f.qui.length ? f.qui : (it.qui ? [it.qui] : []));
+      var cat = FA.CATEGORIES.find(function (c) { return c[0] === f.categoria; });
+      var llocs = [f.lloc, f.municipi].filter(Boolean).join(' · ');
+      var el = document.createElement('article');
+      el.className = 'fitxa';
+      el.innerHTML =
+        '<div class="cap">' + (f.data ? '<span>📅 ' + FA.esc(FA.dataCa(f.data)) + '</span>' : '') +
+          (cat ? '<span>' + cat[1] + ' ' + cat[2] + '</span>' : '') +
+          (ITEMS.length > 1 ? '<span>Àudio ' + (i + 1) + ' de ' + ITEMS.length + '</span>' : '') +
+          (PIN && it.audio ? '<span class="eines"><button type="button" data-edita="' + i + '">✏️ Edita</button></span>' : '') + '</div>' +
+        (f.titol ? '<h2>' + FA.esc(f.titol) + '</h2>' : '') +
+        (qui.length ? '<div class="qui">🗣️ ' + FA.esc(qui.join(', ')) + '</div>' : '') +
+        (llocs ? '<div class="cap">📍 ' + FA.esc(llocs) + '</div>' : '') +
+        (f.descripcio ? '<div class="desc">' + FA.marcaAHtml(f.descripcio) + '</div>' : '') +
+        (directe ? '<audio controls preload="metadata"' + (i === 0 ? ' autoplay' : '') + ' src="' + FA.esc(it.url) + '"></audio>' +
+          '<div class="peu"><a href="' + FA.esc(it.url) + '" download>⬇️ Descarrega</a></div>' : '') +
+        '<div class="editor" hidden></div>';
+      caixa.insertBefore(el, iframe);
+    });
+    if (directe) { iframe.hidden = true; }
+    else iframeDeSempre();
+  }
+
+  /* Un sol àudio alhora */
+  document.addEventListener('play', function (e) {
+    if (e.target.tagName !== 'AUDIO') return;
+    document.querySelectorAll('audio').forEach(function (x) { if (x !== e.target) x.pause(); });
+  }, true);
+
+  /* ----- EDICIÓ AMB CLAU ----- */
+  var $ = function (id) { return document.getElementById(id); };
+  function llegeixLS(k) { try { return localStorage.getItem(k) || ''; } catch (e) { return ''; } }
+  function escriuLS(k, v) { try { v ? localStorage.setItem(k, v) : localStorage.removeItem(k); } catch (e) {} }
+
+  async function entra() {
+    var pin = $('pin').value.trim();
+    if (!pin) { $('clauEstat').textContent = 'Escriu la clau.'; return; }
+    $('clauEstat').textContent = 'Comprovant la clau…';
+    try {
+      var d = await FA.llegeix(pin);
+      PIN = pin; CATAL = d.fonoteca || { audios: [] };
+      escriuLS(CLAU_DESADA, $('recorda').checked ? PIN : '');
+      $('clauBox').hidden = true;
+      $('candau').textContent = '🔓'; $('candau').title = 'Edició oberta';
+      pinta();
+    } catch (e) {
+      $('clauEstat').textContent = '❌ ' + (e instanceof TypeError ? "No s'ha pogut connectar." : e.message);
+    }
+  }
+
+  function edita(i) {
+    var it = ITEMS[i], art = document.querySelectorAll('#fitxes .fitxa')[i], caixa = art.querySelector('.editor');
+    if (!caixa.hidden) { caixa.hidden = true; return; }
+    var f = fitxaDe(it) || { qui: it.qui ? [it.qui] : [], data: FA.dataDelNom(it.fitxer), categoria: 'declaracions' };
+    caixa.hidden = false;
+    var ed = FA.editor(caixa, f);
+    var fila = document.createElement('div');
+    fila.className = 'fila';
+    fila.innerHTML = '<button type="button" class="principal">Desa</button><button type="button">Cancel·la</button><span class="nota"></span>';
+    caixa.appendChild(fila);
+    var bots = fila.querySelectorAll('button'), estat = fila.querySelector('.nota');
+    bots[1].onclick = function () { caixa.hidden = true; };
+    bots[0].onclick = async function () {
+      bots[0].disabled = true; estat.textContent = 'Desant…';
+      try {
+        var d = await FA.desaFitxes(PIN, [Object.assign({ fitxer: it.clau }, ed.valors())]);
+        CATAL = d.fonoteca || CATAL;
+        pinta();
+      } catch (e) {
+        estat.textContent = '❌ ' + (e instanceof TypeError ? "No s'ha pogut connectar." : e.message);
+        bots[0].disabled = false;
+      }
+    };
+    caixa.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  $('fitxes').addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-edita]');
+    if (b) edita(+b.dataset.edita);
+  });
+  $('candau').onclick = function () {
+    if (PIN) return;
+    $('clauBox').hidden = false; $('pin').focus();
+  };
+  $('entra').onclick = entra;
+  $('pin').onkeydown = function (e) { if (e.key === 'Enter') entra(); };
+
+  carrega().then(function () {
+    var desada = llegeixLS(CLAU_DESADA);
+    $('recorda').checked = !!desada;
+    if (desada) { $('pin').value = desada; entra(); }
+  }).catch(function () { iframeDeSempre(); });
 
   /* =====================================================
      ALÇADA DINÀMICA DE L'IFRAME (missatge del publicador)
+     07.11.2026: el títol de la pàgina ja no el canvia el reproductor.
      ===================================================== */
   window.addEventListener('message', function(event) {
     if (
@@ -169,16 +344,6 @@ footer{color:var(--suau);font-size:.85rem;padding-bottom:32px}
       typeof event.data.alcada === 'number'
     ) {
       document.getElementById('f').style.height = event.data.alcada + 'px';
-    }
-    // Canvi 05.11.2026: títol de la fitxa de La TdG fonoteca (si està revisada).
-    if (
-      event.data &&
-      event.data.tipus === 'latdg-titol' &&
-      typeof event.data.titol === 'string' &&
-      event.data.titol.trim()
-    ) {
-      t.textContent = event.data.titol.trim().slice(0, 150);
-      document.title = 'La TdG · ' + t.textContent;
     }
   });
 </script>
