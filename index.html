@@ -201,6 +201,10 @@ footer{color:var(--suau);font-size:.85rem;padding-bottom:32px}
     fitxers = u.searchParams.getAll('f').map(function (x) { return x.trim(); }).filter(Boolean);
     quiEnllac = u.searchParams.getAll('t');
   } catch (e) {}
+  // 07.11.2026: enllaç curt ?a=nom1,nom2 (noms comprimits, sense .mp3), el que copia la fonoteca
+  if (!fitxers.length && p.get('a')) {
+    fitxers = p.get('a').split(',').map(function (x) { x = x.trim(); return x && !/\.[a-z0-9]{2,4}$/i.test(x) ? x + '.mp3' : x; }).filter(Boolean);
+  }
 
   var n = fitxers.length || parseInt(p.get('n'), 10) || 1;
   t.textContent = n > 1 ? 'Escolta els àudios' : "Escolta l'àudio";
